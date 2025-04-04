@@ -1,0 +1,11 @@
+CPP0.pdf
+.vscode
+*.o
+
+ex00/*.o
+megaphone
+
+ex01/obj/*
+myAwesomePhoneBook
+
+ex02/obj/*
