@@ -1,59 +1,87 @@
 #include "phoneBook.hpp"
 
-int	main()
+static std::string	notEmpty(const std::string entry)
 {
-	PhoneBook	phoneBook; // cree une instance de la classe PhoneBook
-	std::string	command;
+	std::string	input;
 
-	while (1){
-		std::cout << "Enter a command (ADD, SEARCH or EXIT): ";
-		std::getline(std::cin, command);
-		if (command == "ADD"){
-			std::string	firstName;
-			std::cout << TURQUOISE << "First Name: ";
-			std::getline(std::cin, firstName);
-			std::string	lastName;
-			std::cout << "Last Name: ";
-			std::getline(std::cin, lastName);
-			std::string	nickname;
-			std::cout << "Nickname: ";
-			std::getline(std::cin, nickname);
-			std::string	phoneNumber;
-			std::cout << "Phone number: ";
-			std::getline(std::cin, phoneNumber);
-			std::string	secret;
-			std::cout << "Darkest secret: ";
-			std::getline(std::cin, secret);
-			std::cout << RESET;
+	do
+	{
+		std::cout << BLUE << entry << RESET;
+		std::getline(std::cin, input);
+		if (input.empty())
+			std::cout << ORANGE << "Field cannot be empty" << RESET << std::endl;
+	} while (input.empty());
+	return (input);
+}
 
-			phoneBook.addContact(firstName, lastName, nickname, phoneNumber, secret);
-		}
-		else if (command == "SEARCH") {
-			phoneBook.displayContacts();
-		}
-		else if (command == "EXIT") {
-			std::cout << MAGENTA << "Exiting... " << RESET << std::endl;
+static int	addContact(PhoneBook &phoneBook)
+{
+	std::string	firstName;
+	std::string	lastName;
+	std::string	nickname;
+	std::string	phoneNumber;
+	std::string	secret;
+
+	std::cout << std::endl;
+	firstName = notEmpty("\tFirst Name: ");
+	lastName = notEmpty("\tLast Name: ");
+	nickname = notEmpty("\tNickname: ");
+	phoneNumber = notEmpty("\tPhone number: ");
+	secret = notEmpty("\tDarkest secret: ");
+	phoneBook.addContact(firstName, lastName, nickname, phoneNumber, secret);
+	std::cout << std::endl;
+	return (1);
+}
+
+static void	searchContact(PhoneBook	&phoneBook, int nbContacts)
+{
+	std::string	indexStr;
+	int			i;
+	
+	phoneBook.displayContacts();
+	while (1)
+	{
+		std::cout << TURQUOISE << "Enter the index of the contact you want: " << RESET;
+		std::getline(std::cin, indexStr);
+		i = std::atoi(indexStr.c_str());
+		if (nbContacts == 0)
+		{
+			std::cout << ORANGE << "Phone book is empty" << RESET << std::endl;
 			break ;
 		}
-		else {
-			std::cout << RED << "Wrong command" << RESET << std::endl;
+		if (indexStr.length() != 1 || !std::isdigit(indexStr[0]) || (i < 0 || i >= nbContacts))
+			std::cout << ORANGE << "Wrong index" << RESET << std::endl;
+		else
+		{
+			std::cout << std::endl;
+			phoneBook.displayContact(i);
+			std::cout << std::endl;
+			break ;
 		}
 	}
+}
 
+int	main()
+{
+	PhoneBook	phoneBook;
+	std::string	command;
+	int			nbContacts = 0;
 
-
-
-/* 	phoneBook.addContact("Louise", "Collonge", "Culbuto", "01234", "j'ai un lapin qui s'appelle une mouche");
-	phoneBook.addContact("Guillaume", "Despont", "Guimo Pedon", "56789", "je s'appelle Grout");
-	phoneBook.addContact("Jean-Philibert", "Tirtir", "J'en fi", "42", "je suis un brigand");
-	phoneBook.addContact("Sebastienne", "Boustifloupe", "Sebastiennette", "12", "mes parents hesitaient avec Etienne");
-	phoneBook.addContact("Kamyll", "De La Motte", "la grosse Came", "888", "i like trains");
-	phoneBook.addContact("Qwertie", "Clav'yeah", "Qwesh", "84759485", "je suis illettree");
-	phoneBook.addContact("Kevin", "Tartuffe", "Truffe", "06556677", "je veux changer de nom");
-	phoneBook.addContact("Wrong", "Wrong", "Wrong", "Wrong", "Wrong");
-	//9e contact:
-	phoneBook.addContact("Machine", "Truc", "Vachette", "010101", "je n'existe pas");
-	phoneBook.displayContacts(); */
-
+	while (1)
+	{
+		std::cout << TURQUOISE << "Enter a command (ADD, SEARCH or EXIT): " << RESET ;
+		std::getline(std::cin, command);
+		if (command == "ADD")
+			nbContacts += addContact(phoneBook);
+		else if (command == "SEARCH")
+			searchContact(phoneBook, nbContacts);
+		else if (command == "EXIT")
+		{
+			std::cout << BOLD_RED << "Exiting... " << RESET << std::endl;
+			break ;
+		}
+		else
+			continue ;
+	}
 	return (0);
 }

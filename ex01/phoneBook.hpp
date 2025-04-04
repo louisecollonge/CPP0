@@ -3,16 +3,15 @@
 
 #include "contact.hpp"
 
-//__________________________________PHONEBOOK_________________________________
-
-class PhoneBook {
+class PhoneBook
+{
 	private:
 		Contact	contacts[8]; // chaque element de ce tableau est une instance de la classe Contact
 		int		index;
+
 	public:
 		PhoneBook();
 		~PhoneBook();
-
 		void	addContact(const std::string &first, const std::string &last, 
 						const std::string &nick, const std::string &phone,
 						const std::string &secret);
