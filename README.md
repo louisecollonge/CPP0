@@ -1,14 +1,13 @@
 ## CPP module 00
 
 # Description
-
-Ce module est le premier d’une série de modules visant à apprendre la programmation orientée objet en C++. Il introduit les bases du langage C++, en particulier les différences fondamentales entre C et C++, notamment :
-- Syntaxe de base du C++
-- Différences entre std::cout, std::cin, std::endl et les fonctions C classiques comme printf
-- Les espaces de noms (namespace)
-- Les fonctions membres et non membres
-- La manipulation des classes et des objets
-- Les constructeurs et destructeurs
+This module is the first of a serie of modules aiming to teach object oriented programming in C++98. It introduces the basis of the C++ language, espacially its differencies with C, like:
+- Syntax
+- Differences between std::cout, std::cin, std::endl classic C functions like printf
+- Namespaces
+- Methods, non member functions
+- Classes and objects
+- Constructors and destructors
 
 # Setup
 
