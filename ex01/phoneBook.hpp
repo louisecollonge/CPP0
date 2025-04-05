@@ -17,7 +17,6 @@ class PhoneBook
 						const std::string &secret);
 		void	displayContacts() const;
 		void	displayContact(int i) const;
-		void	exit();
 };
 
 #endif

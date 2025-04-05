@@ -1,8 +1,15 @@
 #include "phoneBook.hpp"
 
-PhoneBook::PhoneBook() : index(0) {}
+PhoneBook::PhoneBook() : index(0) {} // constructeur de la classe PhoneBook: initialise les attributs
+									 // il peut aussi allouer des ressources dynamiques si necessaire,
+									 // ouvrir des fichiers, etablir des connections reseau...
+									 // il n'a pas de type de retour.
+									 // s'il n'est pas parametre, le compilateur le generera par defaut,
+									 // sans rien initialiser
 
-PhoneBook::~PhoneBook() {}
+PhoneBook::~PhoneBook() {} // destructeur: sert a liberer les ressources allouees (non necessaire
+						   // si pas d'allocation dynamique, mais bonne pratique)
+
 
 void	PhoneBook::addContact(const std::string &first, const std::string &last, 
 		const std::string &nick, const std::string &phone,
@@ -16,7 +23,9 @@ void	PhoneBook::addContact(const std::string &first, const std::string &last,
 		contacts[index - 1].setContact(first, last, nick, phone, secret);
 }
 
-void	PhoneBook::displayContacts() const
+void	PhoneBook::displayContacts() const // methode constante = ne peut pas modifier l'objet de sa classe
+										   // cependant, elle peut appeler une fonction non constante, qui
+										   // elle pourra modifier l'objet
 {
 	std::cout << std::endl;
 	std::cout << std::setw(10) << std::right << "Index" << "|"

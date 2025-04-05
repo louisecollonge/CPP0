@@ -7,10 +7,10 @@
 #define BOLD_RED 	"\033[1;31m"
 #define RESET		"\033[0m"
 
-#include <iomanip>
+#include <iomanip> // bibliotheque d'affichage: contient "std::setw", "std::right"
 #include <iostream>
 #include <string>
-#include <cstdlib>
+#include <cstdlib> // pour atoi
 
 class Contact
 {
