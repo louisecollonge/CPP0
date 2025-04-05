@@ -1,14 +1,16 @@
 # Variables
 
-NAME = 
+NAME = Accounting
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 
 OBJ_DIR = obj
+
 SRC =	Account.cpp \
 		tests.cpp
 
-OBJ = $(SRC:%.cpp=(OBJ_DIR)/%.o)
+
+OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
 # Rules
 
