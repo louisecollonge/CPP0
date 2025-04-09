@@ -7,8 +7,8 @@ CFLAGS = -Wall -Wextra -Werror -g -std=c++98
 OBJ_DIR = obj
 
 SRC = 	main.cpp \
-		contact.cpp \
-		phoneBook.cpp
+		Contact.cpp \
+		PhoneBook.cpp
 
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 

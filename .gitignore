@@ -1,6 +1,7 @@
 CPP0.pdf
 .vscode
 *.o
+*.odt
 
 ex00/*.o
 megaphone
